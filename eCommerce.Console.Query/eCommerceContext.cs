@@ -8,7 +8,12 @@ namespace eCommerce.API.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // .UseLazyLoadingProxies() - Habilita o Lazy Loading com Proxies
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;");
+            optionsBuilder.
+                UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;"
+                //options => options.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery) - QUERY DIVIDIDA
+                );
+                //.LogTo(System.Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
+                //.EnableSensitiveDataLogging();
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
