@@ -1,4 +1,5 @@
 ﻿using eCommerce.API.Database;
+using eCommerce.Models;
 using Microsoft.EntityFrameworkCore;
 
 /*
@@ -175,4 +176,19 @@ var usuariosSkipTake = db.Usuarios.Skip(1).Take(2).ToList();
 foreach (var usuario in usuariosSkipTake)
 {
     Console.WriteLine($" -- {usuario.Nome}");
+}
+
+/*
+ * SELECT
+ */
+
+Console.WriteLine("SELECT:");
+var usuariosSelect = db.Usuarios
+    .Where(a => a.Id > 2)
+    .Select(a => new { a.Id, a.Nome, a.NomeMae })
+    .ToList();
+
+foreach (var usuario in usuariosSelect)
+{
+    Console.WriteLine($" - COD: {usuario.Id} - NOME: {usuario.Nome} - MÃE: {usuario.NomeMae}");
 }
