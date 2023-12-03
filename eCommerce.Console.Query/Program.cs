@@ -211,3 +211,13 @@ foreach (var usuario in usuariosSQLraw)
 {
     Console.WriteLine($" - COD: {usuario.Id} - NOME: {usuario.Nome} - MÃE: {usuario.NomeMae}");
 }
+
+/*
+ * EXECUTA SQL SEM RETORNO
+ * - INSERT, UPDATE, DELETE
+ * - STORED PROCEDURES
+ */
+
+Console.WriteLine("EXECUÇÃO DE ATUALIZAÇÃO COM SQL PURO:");
+var mae = "Josefina";
+db.Database.ExecuteSqlInterpolated($"UPDATE [Usuarios] SET [NomeMae] = {mae} WHERE Id = 1");
